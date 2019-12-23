@@ -8,24 +8,14 @@
 				<p>您可以通过<span @click="dls">登陆</span>或<span @click="zcs">注册</span>来查看个人信息。</p>
 			</div>
 			<div class="per1-ydl" v-else>
-				<p>您好，用户名称{{user}}</p>
-				<p><span @click="change">密码修改</span><span @click="tuichu">退出登录</span></p>
+				<p>您好，用户:{{user}}</p>
+				<p><span @click="tuichu">退出登录</span></p>
 			</div>
 		</div>
-		<!-- <div class="per2 pad20" v-if="userId">
-			<div class="per2-s">
-				<p class="arrow">
-					<router-link to="/dingdanzhongxin">
-						订单中心
-					</router-link>
-				</p>
-				<p class="arrow">
-					<router-link to="/dizhiguanli">
-						地址管理
-					</router-link>
-				</p>
-			</div>
-		</div> -->
+		<div class="moreF">
+			<p class="more-text">更多功能</p>
+			<p class="more-text">敬请期待</p>
+		</div>
 		<div class="dask" v-if="dask">
 			<div class="dask-cen" v-if="dlzc == 1">
 				<h3>登录</h3>
@@ -41,14 +31,6 @@
 				<input type="password" placeholder="请输入您的密码" ref="mima1" />
 				<input type="text" placeholder="请再次输入您的密码" ref="mima2" />
 				<h6 @click="register">注册</h6>
-				<div @click="closeAdd">x</div>
-			</div>
-			<div class="dask-cen" v-else>
-				<h3>密码修改</h3>
-				<input type="password" placeholder="请输入您的原密码" ref="ymm" />
-				<input type="password" placeholder="请输入您的新密码" ref="xmm" />
-				<input type="password" placeholder="请再次输入您新密码" ref="xmm2" />
-				<h6 @click="sureChange">确认修改</h6>
 				<div @click="closeAdd">x</div>
 			</div>
 		</div>
@@ -80,11 +62,6 @@
 			console.log(this.user);
 		},
 		methods: {
-			sureChange() {
-				console.log(this.$refs.ymm.value)
-				console.log(this.$refs.xmm.value)
-				console.log(this.$refs.xmm2.value)
-			},
 			change() {
 				this.dask = true;
 				this.dlzc = 0;
@@ -101,12 +78,12 @@
 			},
 			// 开始登录
 			singin() {
-				console.log('登录');
+				// console.log('登录');
 				this.axios.post(`${this.globals.url}api/PcUser/pclogin`, this.globals.qs.stringify({
 					loginName: this.$refs.zhanghao.value,
 					loginPwd: this.$refs.mima.value
 				})).then((res) => {
-					console.log(res);
+					// console.log(res);
 					if (res.data.status == 1) {
 						this.$message({
 							type: 'success',
@@ -122,15 +99,11 @@
 						});
 					}
 				}).catch(function(error) {
-					console.log(error);
+					// console.log(error);
 				});
 			},
 			// 开始注册
 			register() {
-				console.log(this.$refs.zhanghao1.value)
-				console.log(this.$refs.mima1.value)
-				console.log(this.$refs.mima2.value)
-				console.log('注册');
 				if (this.$refs.mima1.value == this.$refs.mima2.value) {
 					this.axios.post(`${this.globals.url}api/PcUser/login`, this.globals.qs.stringify({
 						loginName: this.$refs.zhanghao1.value,
@@ -191,6 +164,8 @@
 
 <style lang="scss" scoped>
 	@import "~assets/scss/base";
+
+	
 
 	.dask {
 		position: fixed;
@@ -265,7 +240,6 @@
 			}
 		}
 	}
-
 	.personal {
 		width: 100%;
 		position: absolute;
@@ -330,6 +304,14 @@
 					line-height: 60px;
 				}
 			}
+		}
+	}
+	.moreF{
+		margin: 40px;
+
+		.more-text{
+			text-align: center;
+			line-height: 2em;
 		}
 	}
 </style>

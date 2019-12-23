@@ -10,7 +10,16 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/astro':{
+        target:'https://api.jisuapi.com',
+        changeOrigin:true,
+        secure:false,
+        pathRewrite:{
+            '^/astro':'/astro'
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

@@ -123,6 +123,11 @@ export default new Router({
 		path: '/productDetail:proId',
 		name: 'productDetail',
 		component: () => import('pages/productDetail')
+	},
+	{
+		path: '/xingzuoyunshi',
+		name: 'xingzuoyunshi',
+		component: () => import('pages/xingzuoyunshi')
 	}
   ]
 })

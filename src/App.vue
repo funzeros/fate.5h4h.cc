@@ -1,12 +1,12 @@
 <template>
 	<div id="app">
+		<c-tabbar/>
 		<div class="g-header">
 			<router-view v-if="isRouterAlive"></router-view>
 		</div>
-		<!-- 底部 -->
 		<c-foot></c-foot>
 		<!-- 底部 -->
-		<c-tabbar/>
+		<!-- 底部 -->
 	</div>
 </template>
 
@@ -46,7 +46,9 @@
 		margin: 0;
 		padding: 0;
 	}
-
+	.el-message-box{
+		width:70vw;
+	}
 	#app {
 		font-family: 'Avenir', Helvetica, Arial, sans-serif;
 		-webkit-font-smoothing: antialiased;
@@ -58,5 +60,14 @@
 		position: fixed;
 		bottom: 0;
 		left: 0;
+	}
+	.el-collapse-item__header,.el-collapse-item__wrap{
+        background-color: transparent;
+    }
+	.el-collapse-item__header{
+		font-weight: 900;
+	}
+	.el-collapse{
+		border: none;
 	}
 </style>

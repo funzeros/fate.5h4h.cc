@@ -36,7 +36,7 @@
 		</div>
 		<p class="banner-title">好物推荐</p>
 		<div class="banner">
-			<el-carousel trigger="click" type="card" height="5rem">
+			<el-carousel arrow="always" type="card" height="5rem">
 				<el-carousel-item v-for="item in imgurl" :key="item.bid">
 					<a :href="item.adhref" target="_self" class="ban-img"><img :src="item.imgurl" :alt="item.imgalt">
 					<!-- <p class="ban-text">好物浏览次数:{{item.count}}</p> -->
@@ -60,24 +60,12 @@
 				navlist: [{
 					title: '姓名服务',
 					list1: [
-						// {
-						// 	name: '在线起名',
-						// 	url: '/zaixianqiming'
-						// },
-						// {
-						// 	name: '人工起名',
-						// 	url: '/rengongqiming'
-						// },
-						// {
-						// 	name: '公司起名',
-						// 	url: '/gongsiqiming'
-						// },
 						{
 							name: '在线测名',
 							url: '/ceming'
 						}
 					]
-				},{
+					},{
 					title: '命理服务',
 					list1: [
 						{
@@ -97,7 +85,15 @@
 							url: '/shuxiangpeidui'
 						}
 					]
-				},{
+					},{
+						title: '星座占卜',
+						list1: [
+							{
+								name: '星座运势',
+								url: '/xingzuoyunshi'
+							}
+						]
+					},{
 					title: '风水服务',
 					list1: [
 						{
@@ -113,20 +109,16 @@
 							url: '/fengshuipeixun'
 						}
 					]
-				}
-				,{
+					}
+					,{
 					title: '个人服务',
 					list1: [
 						{
 							name: '个人中心',
 							url: '/personal'
 						}
-						// ,{
-						// 	name: '购物车',
-						// 	url: '/cart'
-						// }
 					]
-				}
+					}
 				]
 			};
 		},
@@ -152,7 +144,16 @@
 			},
 			async getAd(){
 				let result = await this.axios.get('http://fate.5h4h.cc/be/adverPHP/getAllAd.php');
-				this.imgurl = result.data;
+				this.imgurl = this.randomAd(result.data);
+			},
+			randomAd(arr){
+				for (let i=arr.length-1; i>=0; i--) {
+					let rIndex = Math.floor(Math.random()*(i+1));
+					let temp = arr[rIndex];
+					arr[rIndex] = arr[i];
+					arr[i] = temp;
+				}
+				return arr;
 			}
 		},
 		mounted(){

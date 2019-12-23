@@ -9,12 +9,15 @@ import 'element-ui/lib/theme-chalk/index.css'
 import 'assets/scss/index.scss'
 import globals from 'assets/js/global.js'
 import VDistpicker from 'v-distpicker'
+import echarts from 'echarts'
 
 Vue.component('v-distpicker', VDistpicker)
 
 Vue.prototype.axios = axios
 
 Vue.prototype.globals = globals
+
+Vue.prototype.echarts = echarts
 
 Vue.use(ElementUI);
 
