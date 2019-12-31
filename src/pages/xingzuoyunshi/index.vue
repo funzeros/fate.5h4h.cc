@@ -22,7 +22,7 @@
                                 <div>幸运数字：{{ysData&&ysData.today.number}}</div>
                                 <div>幸运色：{{ysData&&ysData.today.color}}</div>
                                 <div>匹配星座：{{ysData&&ysData.today.star}}</div>
-                                <div>总结：{{ysData&&ysData.today.presummary}}</div>
+                                <div>总结：<span v-html="ysData&&ysData.today.presummary"></span></div>
                             </div>
                         </el-collapse-item>
                         <el-collapse-item  :title="ysData&&ysData.tomorrow.date+'日(明天)'" name="2">
@@ -31,7 +31,7 @@
                                 <div>幸运数字：{{ysData&&ysData.tomorrow.number}}</div>
                                 <div>幸运色：{{ysData&&ysData.tomorrow.color}}</div>
                                 <div>匹配星座：{{ysData&&ysData.tomorrow.star}}</div>
-                                <div>总结：{{ysData&&ysData.tomorrow.presummary}}</div>
+                                <div>总结：<span v-html="ysData&&ysData.tomorrow.presummary"></span></div>
                             </div>
                         </el-collapse-item>
                         <el-collapse-item :title="ysData&&ysData.week.date+'日(本周)'" name="3">
@@ -45,13 +45,13 @@
                             <div>爱情：{{ysData&&ysData.month.love}}</div>
                             <div>健康：{{ysData&&ysData.month.health}}</div>
                             <div>财运：{{ysData&&ysData.month.money}}</div>
-                            <div>总结：{{ysData&&ysData.month.summary}}</div>
+                            <div>总结：<span v-html="ysData&&ysData.month.summary"></span></div>
                         </el-collapse-item>
                         <el-collapse-item :title="ysData&&ysData.year.date+'年(今年)'" name="5">
                             <div>事业：{{ysData&&ysData.month.career}}</div>
                             <div>爱情：{{ysData&&ysData.month.love}}</div>
                             <div>财运：{{ysData&&ysData.month.money}}</div>
-                            <div>总结：{{ysData&&ysData.month.summary}}</div>
+                            <div>总结：<span v-html="ysData&&ysData.month.summary"></span></div>
                         </el-collapse-item>
                     </el-collapse>
                 </div>
@@ -217,6 +217,9 @@
     }
 </script>
 <style lang="scss" scoped>
+    .el-collapse-item__header,.el-collapse-item__wrap{
+        background-color: transparent!important;
+    }
     .flex{
         display: flex;
         justify-content: space-around;

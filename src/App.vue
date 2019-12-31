@@ -62,7 +62,7 @@
 		left: 0;
 	}
 	.el-collapse-item__header,.el-collapse-item__wrap{
-        background-color: transparent;
+        background-color: transparent!important;
     }
 	.el-collapse-item__header{
 		font-weight: 900;
